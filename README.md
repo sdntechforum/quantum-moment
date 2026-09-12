@@ -1,5 +1,8 @@
 # The Quantum Moment — Companion Code
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721221.svg)](https://doi.org/10.5281/zenodo.22721221)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Runnable labs for **_The Quantum Moment_** by Amit Singh (Apress, 2026).
 
 Every "Try It Yourself" box in the book points here. The code lets you reproduce
@@ -8,6 +11,7 @@ the book's claims first-hand — factor 15 on a simulator, weigh the post-quantu
 cryptographic bill of materials (CBOM) from a small app.
 
 > Canonical home: <https://github.com/sdntechforum/quantum-moment>
+> Archived snapshot (citable, per edition): <https://doi.org/10.5281/zenodo.22721221>
 > Apress also mirrors a snapshot on their GitHub organization.
 
 ## What's inside — by chapter
