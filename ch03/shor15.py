@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
-"""Lab 6a - Shor's algorithm factoring 15 on a simulator (reality check for ch03).
+"""Chapter 3 lab A - compiled Shor period finding for 15 on a simulator.
 
 Runs the quantum period-finding core of Shor's algorithm for N = 15, a = 7 on
 Qiskit's Aer simulator, reads the period from the measured phases, and finishes
 the factoring classically. Prints a Markdown section.
 
-The point is honesty about scale: this works, but it takes a 12-qubit,
-ideal (noiseless) simulator to factor the number 15. RSA-2048 is a 617-digit
-number; credible estimates put its cost at ~20 million noisy physical qubits
-running for hours - hardware that does not exist. "It works on 15" and "it
-threatens RSA" are separated by that gap, and this lab makes the gap concrete.
+This is a problem-specific circuit for N=15 and a=7, not a general-purpose
+implementation of Shor's algorithm. It illustrates the period-finding structure
+without demonstrating scalable factoring or a hardware speedup.
 """
 from fractions import Fraction
 from math import gcd, pi
@@ -90,17 +88,21 @@ def main():
         r = frac.denominator
         if r % 2 != 0:
             continue
+        # A measured phase can reduce to a denominator that divides the true
+        # order (for example 1/2 when the order is 4). Accept r only if it is
+        # actually an order candidate for this base.
+        if pow(A, r, N) != 1:
+            continue
         x = pow(A, r // 2, N)
         if x == N - 1:
             continue
-        f1, f2 = gcd(x - 1, N), gcd(x + 1, N)
-        for f in (f1, f2):
-            if 1 < f < N:
-                factors.add(f)
-        if factors and period is None:
+        candidate_factors = {f for f in (gcd(x - 1, N), gcd(x + 1, N)) if 1 < f < N}
+        if len(candidate_factors) == 2 and period is None:
+            factors = candidate_factors
             period = r
+            break
 
-    print("## Lab 6a - Shor's algorithm factors 15 (ideal simulator)")
+    print("## Chapter 3 lab A - compiled Shor period finding for 15")
     print()
     print(f"_N = {N}, a = {A}; {N_COUNT} counting qubits + 4 work qubits = "
           f"{qc.num_qubits} qubits; transpiled depth {tqc.depth()}, "
@@ -115,24 +117,28 @@ def main():
         print(f"| `{bitstr}` | {decimal} | {phase:.3f} | "
               f"{frac.numerator}/{frac.denominator} | {freq} |")
     print()
-    r = period or 4
+    if period is None:
+        raise RuntimeError("No valid even period producing both factors was recovered")
+    r = period
     x = pow(A, r // 2, N)
     print(f"**Classical finish:** period r = {r}, so "
           f"a^(r/2) = {A}^{r // 2} = {x} (mod {N}); "
           f"gcd({x}-1, {N}) = {gcd(x - 1, N)} and gcd({x}+1, {N}) = {gcd(x + 1, N)}.")
     print()
     if factors == {3, 5}:
-        print(f"**Result: 15 = 3 x 5.** The quantum part found the period; the "
-              f"factors fall out with grade-school arithmetic.")
+        print(f"**Result: 15 = 3 x 5.** The simulated period-finding circuit "
+              f"identified r = 4; classical arithmetic produced the factors.")
     else:
         print(f"**Factors found:** {sorted(factors)}")
     print()
-    print("> **Reality check.** Factoring the number 15 took a 12-qubit, perfectly "
-          "noiseless simulator. RSA-2048 is a 617-digit number; the most-cited "
-          "estimate puts its cost near 20 million *noisy* physical qubits for "
-          "several hours. The algorithm is real and the threat is real - but the "
-          "distance between this demonstration and a broken RSA key is the whole "
-          "story of Chapter 3.")
+    print("> **Reality check.** This problem-specific demonstration used a "
+          "12-qubit, perfectly noiseless simulator. It does not demonstrate "
+          "general or scalable factoring. For RSA-2048, a 2019 estimate used "
+          "about 20 million noisy physical qubits for eight hours; a 2025 "
+          "preprint reduced the estimate to fewer than one million noisy qubits "
+          "with a runtime under one week under the same stated hardware "
+          "assumptions. Neither machine exists today, and the estimates are "
+          "resource models rather than hardware measurements.")
 
 
 if __name__ == "__main__":

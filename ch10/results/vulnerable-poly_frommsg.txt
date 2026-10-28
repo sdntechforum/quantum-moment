@@ -1,0 +1,18 @@
+00000000000001b8 <pqcrystals_kyber512_ref_poly_frommsg>:
+     1b8:      	xor	eax, eax
+     1ba:      	xor	ecx, ecx
+     1bc:      	movzx	r8d, byte ptr [rsi + rax]
+     1c1:      	xor	edx, edx
+     1c3:      	bt	r8d, ecx
+     1c7:      	jae	0x1ce <pqcrystals_kyber512_ref_poly_frommsg+0x16>
+     1c9:      	mov	edx, 0x681
+     1ce:      	mov	word ptr [rdi + 2*rcx], dx
+     1d2:      	inc	rcx
+     1d5:      	cmp	rcx, 0x8
+     1d9:      	jne	0x1bc <pqcrystals_kyber512_ref_poly_frommsg+0x4>
+     1db:      	inc	rax
+     1de:      	add	rdi, 0x10
+     1e2:      	cmp	rax, 0x20
+     1e6:      	jne	0x1ba <pqcrystals_kyber512_ref_poly_frommsg+0x2>
+     1e8:      	ret
+

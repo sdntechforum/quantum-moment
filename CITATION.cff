@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this companion code, please cite the book and this repository."
 title: "The Quantum Moment — Companion Code"
-abstract: "Runnable labs for the book The Quantum Moment (Apress, 2026): compiled Shor and Grover demos, post-quantum size measurements, hybrid TLS/SSH/certificate labs, and a cryptographic bill-of-materials (CBOM) walkthrough."
+abstract: "Runnable book-mapped labs for The Quantum Moment (Apress, 2026): quantum algorithm demonstrations, post-quantum sizes, hybrid protocol negotiation, IKEv2 lifecycle, binary inspection, crypto-agility, and a cryptographic bill of materials (CBOM)."
 type: software
 authors:
   - family-names: Singh
@@ -9,11 +9,9 @@ authors:
 repository-code: "https://github.com/sdntechforum/quantum-moment"
 url: "https://github.com/sdntechforum/quantum-moment"
 license: MIT
-version: 1.0.0
-date-released: 2026-09-12
+version: 1.1.0
 keywords:
   - post-quantum cryptography
   - quantum computing
   - ML-KEM
   - CBOM
-doi: 10.5281/zenodo.22721221

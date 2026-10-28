@@ -1,14 +1,32 @@
 # Chapter 7 — Rebuilding the Plumbing
 
-Three short labs behind the "Try It Yourself" boxes in Chapter 7. They show the
-post-quantum migration arriving one protocol at a time — first as raw bytes on
-the wire, then as a live key exchange.
+These three local-only labs support the chapter's protocol-size and migration
+claims. They are the Chapter 7 experiments intended for the book. They do not
+benchmark cryptographic security or production throughput.
 
-| Folder | Lab | Run it to see |
+| Folder | Lab | Evidence produced |
 |---|---|---|
-| [`cert-chains/`](cert-chains/) | Certificate-chain weight | The DER bytes a TLS server actually sends (intermediate + leaf) per algorithm |
-| [`tls/`](tls/) | Hybrid TLS 1.3 handshake | A classical ClientHello vs. `X25519MLKEM768` — the `key_share` swelling in the first packet |
-| [`ssh/`](ssh/) | PQC in SSH | A current OpenSSH already advertising ML-KEM key exchange in its default proposal |
+| [`tls/`](tls/) | TLS 1.3 ClientHello size | Compares `x25519` with the standardized `X25519MLKEM768` hybrid group |
+| [`cert-chains/`](cert-chains/) | X.509 chain size | Builds minimal two-certificate server chains and measures DER bytes |
+| [`ssh/`](ssh/) | SSH hybrid key exchange | Negotiates `mlkem768x25519-sha256` against a loopback-only server |
 
-**Prerequisites:** OpenSSL 3.5+ and a recent OpenSSH. See each folder's
-`README.md` for exact commands and expected output.
+## Prerequisites
+
+- OpenSSL 3.5 or later for the TLS lab
+- OpenSSL 3.6 or later for the ML-DSA and SLH-DSA certificate lab
+- OpenSSH with `mlkem768x25519-sha256` support for the SSH lab
+- A POSIX shell, `awk`, `grep`, `wc`, and standard Unix utilities
+
+Run each script from its own folder. The TLS and SSH scripts bind only to
+`127.0.0.1`; they do not contact an external service. If a default port is in
+use, set `PORT` before running the script.
+
+Reference output from the review environment is recorded in [`results.md`](results.md).
+
+## Interpretation limits
+
+The byte counts depend on the OpenSSL build, certificate fields, extensions,
+and protocol options. The labs demonstrate message growth and threshold risk;
+they are not universal Internet latency measurements. Production decisions
+also require tests through the organization's browsers, proxies, load
+balancers, firewalls, certificate services, and observability stack.

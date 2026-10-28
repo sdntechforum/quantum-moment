@@ -1,0 +1,9 @@
+mode=agile
+algorithm=ED25519
+verification=PASS
+signature_bytes=64
+public_key_bytes=113
+private_key_bytes=119
+public_key_sha256=1efa711d5953c11d4fabc995b42b2bc2514fe8245020520c3122705673329123
+input_sha256=6c4cd94b6823a8eb67605d9fd7112b36399bedac37de4f8d40d2e35cbc6b67ba
+openssl_version=OpenSSL 3.5.8 25 Aug 2026 (Library: OpenSSL 3.5.8 25 Aug 2026)

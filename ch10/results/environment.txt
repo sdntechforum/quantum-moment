@@ -1,0 +1,7 @@
+Chapter 10 Clangover binary-inspection lab
+repository=https://github.com/pq-crystals/kyber.git
+vulnerable_commit=b628ba78711bc28327dc7d2d5c074a00f061884e
+fixed_commit=9b8d30698a3e7449aeb34e62339d4176f11e3c6c
+architecture=x86_64
+Debian clang version 18.1.8 (++20240731024826+3b5b5c1ec4a3-1~exp1~20240731144843.145)
+Debian LLVM version 18.1.8

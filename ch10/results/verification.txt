@@ -1,0 +1,4 @@
+PASS
+The vulnerable object contains the expected bt/jae sequence.
+The fixed object does not contain that jae pattern in poly_frommsg.
+This lab inspects generated code; it does not attempt key recovery.

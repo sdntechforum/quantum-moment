@@ -1,9 +1,10 @@
 """Token signing and a couple of hashes that hide in plain sight.
 
-HMAC-SHA256 is fine. The MD5 and SHA-1 below are the classic "it's only a cache
-key / dedup id, it doesn't need to be secure" excuse - which is exactly how
-broken primitives survive in real codebases. A CBOM flags them regardless of the
-programmer's intent.
+HMAC-SHA256 is included as a modern symmetric construction, subject to key and
+protocol handling. The MD5 and SHA-1 below demonstrate why an algorithm finding
+must be interpreted in context: a collision-prone hash can be a security defect,
+an identity defect, or non-security technical debt. The pinned scanner flags the
+pyca forms but misses the standard-library forms.
 """
 import hashlib
 from cryptography.hazmat.primitives import hashes, hmac

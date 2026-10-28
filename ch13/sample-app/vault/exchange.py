@@ -1,8 +1,9 @@
 """Key-agreement helpers.
 
 Both classical key-exchange methods below are QUANTUM-VULNERABLE. This is the
-place a post-quantum migration would add ML-KEM (see Lab 4 for the IPsec
-equivalent) - but first the CBOM has to reveal that DH and ECDH are here at all.
+place a post-quantum migration might add a standardized hybrid or PQC mechanism.
+A complete inventory should reveal these dependencies. The pinned source scan in
+Chapter 16 does not report them, which is retained as a negative control.
 """
 from cryptography.hazmat.primitives.asymmetric import dh, ec
 

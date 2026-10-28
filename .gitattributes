@@ -1,0 +1,5 @@
+# Retained signatures are generated binary evidence.
+*.bin binary
+
+# Preserve objdump's generated blank line after each extracted function.
+ch10/results/*-poly_frommsg.txt -whitespace

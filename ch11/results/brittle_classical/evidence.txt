@@ -1,0 +1,4 @@
+mode=brittle
+algorithm=ED25519
+verification=PASS
+signature_bytes=64

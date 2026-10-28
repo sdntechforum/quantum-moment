@@ -1,0 +1,4 @@
+mode=brittle
+algorithm=ML-DSA-65
+verification=PASS
+signature_bytes=3309

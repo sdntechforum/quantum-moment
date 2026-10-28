@@ -1,0 +1,9 @@
+mode=agile
+algorithm=ML-DSA-65
+verification=PASS
+signature_bytes=3309
+public_key_bytes=2726
+private_key_bytes=5604
+public_key_sha256=3c287c2680c1980e49c5ff71ac055adac0cbd771495b6dfbc87ba6592522b74f
+input_sha256=6c4cd94b6823a8eb67605d9fd7112b36399bedac37de4f8d40d2e35cbc6b67ba
+openssl_version=OpenSSL 3.5.8 25 Aug 2026 (Library: OpenSSL 3.5.8 25 Aug 2026)

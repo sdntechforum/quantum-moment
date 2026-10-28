@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Lab 6b - Grover's search, and why it only *doubles* symmetric key sizes (ch03/ch04).
+"""Chapter 3 lab B - Grover search on an ideal simulator.
 
 Runs Grover's algorithm on a small unstructured search (find one marked item
-among N = 2^n) on Aer, showing the quadratic speedup: ~sqrt(N) iterations
-instead of ~N/2 classical guesses. Then it extrapolates honestly to cryptography:
+among N = 2^n) on Aer, illustrating the quadratic query advantage: ~sqrt(N)
+oracle calls instead of ~N/2 classical queries. This is not a wall-clock speed
+test because Aer runs the quantum circuit on a classical computer. It then
+extrapolates to cryptography:
 Grover turns a 2^k brute-force into ~2^(k/2), which is why AES keys are simply
 *doubled* (AES-256 keeps a 128-bit safety margin) rather than abandoned the way
 RSA is under Shor. Prints a Markdown section.
@@ -71,7 +73,7 @@ def main():
     top_val = int(top_bits, 2)
     prob = top_freq / 2048
 
-    print("## Lab 6b - Grover's search: a *quadratic* speedup, not a magic one")
+    print("## Chapter 3 lab B - Grover's quadratic query advantage")
     print()
     print(f"_Search space N = {size} (n = {n} qubits); Grover iterations run = "
           f"{iterations}; 2048 shots._")
@@ -85,7 +87,7 @@ def main():
     print("|---|---|")
     print(f"| Classical (average) | ~{size // 2} guesses |")
     print(f"| Classical (worst case) | {size} guesses |")
-    print(f"| Grover (quantum) | ~{iterations} iterations (about sqrt(N)) |")
+    print(f"| Grover (ideal query model) | ~{iterations} oracle queries (about sqrt(N)) |")
     print()
     print("**Why this is the *good* news for symmetric crypto.** Grover shrinks a "
           "brute-force of 2^k to about 2^(k/2) - a square-root, not the collapse "
@@ -97,13 +99,13 @@ def main():
     print("| AES-128 | 128 | 2^128 | ~2^64 | thin - avoid for long-lived secrets |")
     print("| AES-256 | 256 | 2^256 | ~2^128 | 128-bit margin - the safe choice |")
     print()
-    print("> **Reality check.** This is why the post-quantum answer for symmetric "
-          "encryption and hashing is mundane - *use bigger keys/outputs* (AES-256, "
-          "SHA-384/512) - while the answer for RSA and elliptic-curve is *replace "
-          "the algorithm entirely*. Grover is a real speedup, but a 2^64 workload "
-          "is still oceans of compute; the sky is not falling on AES the way it is "
-          "on RSA. That asymmetry - catastrophe for public-key, inconvenience for "
-          "symmetric - is exactly the split the rest of the book is built on.")
+    print("> **Reality check.** Aer classically simulated this circuit, so the run "
+          "does not demonstrate a wall-clock quantum speedup. The security lesson "
+          "comes from Grover's ideal query complexity: exhaustive key search is "
+          "quadratically faster, while Shor changes the asymptotic basis of RSA "
+          "and elliptic-curve security. Real cryptanalytic cost also depends on "
+          "reversible-oracle construction, circuit depth, error correction, "
+          "parallelization, and hardware throughput.")
 
 
 if __name__ == "__main__":
