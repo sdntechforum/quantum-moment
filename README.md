@@ -14,7 +14,7 @@ completed chapter reviews appear in this table.
 > Canonical home: <https://github.com/sdntechforum/quantum-moment>
 > Book-edition source release: <https://github.com/sdntechforum/quantum-moment/releases/tag/v1.1.0>
 > Historical v1.0.0 archive (not this reviewed lab set): <https://doi.org/10.5281/zenodo.22721221>
-> Book-edition archive DOI: pending deposit. Do not use the historical archive as evidence for Chapters 8–11 or the hardened Chapter 16 lab.
+> Book-edition archive DOI: <https://doi.org/10.5281/zenodo.23738250>. Do not use the historical archive as evidence for Chapters 8–11 or the hardened Chapter 16 lab.
 > Apress also mirrors a snapshot on their GitHub organization.
 
 ## What's inside — by chapter

@@ -11,6 +11,7 @@ url: "https://github.com/sdntechforum/quantum-moment"
 license: MIT
 version: 1.1.0
 date-released: 2026-10-28
+doi: 10.5281/zenodo.23738250
 keywords:
   - post-quantum cryptography
   - quantum computing
