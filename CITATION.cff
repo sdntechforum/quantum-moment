@@ -10,6 +10,7 @@ repository-code: "https://github.com/sdntechforum/quantum-moment"
 url: "https://github.com/sdntechforum/quantum-moment"
 license: MIT
 version: 1.1.0
+date-released: 2026-10-28
 keywords:
   - post-quantum cryptography
   - quantum computing
